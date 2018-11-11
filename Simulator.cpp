@@ -103,8 +103,5 @@ void Simulator::securityQueueToCounter() {
 }
 
 void Simulator::calculateResults() {
-    float temp = (avgWaitingTime / numOfPassengers) * 1000;
-    int withoutDecimals = temp;
-    float result = (float(withoutDecimals))/1000;
-    avgWaitingTime = result;
+    avgWaitingTime = avgWaitingTime / numOfPassengers;
 }
