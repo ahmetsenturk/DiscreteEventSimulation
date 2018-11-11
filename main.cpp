@@ -3,6 +3,7 @@
 #include <fstream>
 #include <vector>
 #include <queue>
+#include <iterator>
 #include "Passenger.h"
 #include "Simulator.h"
 
