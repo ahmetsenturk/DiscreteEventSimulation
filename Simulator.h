@@ -22,7 +22,7 @@ public:
                 }else {
                     return p1.flightTime > p2.flightTime;
                 }
-            }else {//there should be a mistake
+            }else {
                 if(p1.arrivalTimeToQueue == p2.arrivalTimeToQueue){
                     return p1.arrivalTime > p2.arrivalTime;
                 }else {

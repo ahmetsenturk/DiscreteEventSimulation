@@ -75,7 +75,7 @@ void Simulator::timerTick() {
             securityQueueToCounter();
             luggageQueueToCounter();
         }
-        currentTime++;
+        currentTime = eventQueue.top().exitTime;
     }
     calculateResults();
 }
