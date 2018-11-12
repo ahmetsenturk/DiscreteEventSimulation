@@ -61,27 +61,30 @@ int main(int argc, char* argv[]) {
     // process first line
     getline(infile, line);
     split1(line, input);
-    int N = stoi(input[0]);
-    int numLugCount = stoi(input[1]);
-    int numSecCount = stoi(input[2]);
-    cout << "number of input lines: " << N << endl;
-    queue<Passenger> passengers;
+    if(!input.empty()) {
+        int N = stoi(input[0]);
+        int numLugCount = stoi(input[1]);
+        int numSecCount = stoi(input[2]);
+        cout << "number of input lines: " << N << endl;
+        queue<Passenger> passengers;
 
-    for (int i=0; i<N; i++) {
-        getline(infile, line);
-        cout << "line: " << line << endl;
+        for (int i = 0; i < N; i++) {
+            getline(infile, line);
+            cout << "line: " << line << endl;
 
-        vector<string> words;
-        split1(line,words);
-        Passenger p(stoi(words[0]), stoi(words[1]), stoi(words[2]), stoi(words[3]), words[4].c_str()[0], words[5].c_str()[0]);
-        passengers.push(p);
+            vector<string> words;
+            split1(line, words);
+            Passenger p(stoi(words[0]), stoi(words[1]), stoi(words[2]), stoi(words[3]), words[4].c_str()[0],
+                        words[5].c_str()[0]);
+            passengers.push(p);
+        }
+
+        cout << "input file has been read" << endl;
+
+        // here, perform the output operation. in other words,
+        // print your results into the file named <argv[2]>
+        scenerios(passengers, argv[2], numLugCount, numSecCount);
     }
-
-    cout << "input file has been read" << endl;
-
-    // here, perform the output operation. in other words,
-    // print your results into the file named <argv[2]>
-    scenerios(passengers, argv[2], numLugCount, numSecCount);
 
     return 0;
 }

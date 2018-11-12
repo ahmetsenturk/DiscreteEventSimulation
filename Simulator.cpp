@@ -12,10 +12,10 @@ Simulator::Simulator(queue<Passenger> _passengers, bool _firstFlight,
     onlineTicket = _onlineTicket;
     numLuggageCounters = _numLugCount;
     numSecurityCounters = _numSecCount;
-    currentTime = _passengers.front().exitTime;
     numOfPassengers = _passengers.size();
     numMissedFlights = 0;
     avgWaitingTime = 0;
+    currentTime = !_passengers.empty() ? _passengers.front().exitTime : 0;
     buildEventQueue(_passengers);
     timerTick();
 }
@@ -23,10 +23,7 @@ Simulator::Simulator(queue<Passenger> _passengers, bool _firstFlight,
 void Simulator::buildEventQueue(queue<Passenger> passengers) {
     while (!passengers.empty()) {
         Passenger p = passengers.front();
-        if(firstFlight)
-            p.firstFlight = true;
-        else
-            p.firstFlight = false;
+        p.firstFlight = firstFlight;
         p.event = ArrivingTerminal;
         eventQueue.push(p);
         passengers.pop();
